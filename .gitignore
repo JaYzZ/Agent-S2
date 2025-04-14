@@ -24,6 +24,8 @@ share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+kb_data/
+kb_s2/
 MANIFEST
 
 # PyInstaller
@@ -49,6 +51,7 @@ coverage.xml
 *.py,cover
 .hypothesis/
 .pytest_cache/
+.vscode/
 cover/
 
 # Translations
@@ -162,3 +165,4 @@ cython_debug/
 #.idea/
 logs/
 .DS_Store
+.vscode/launch.json

@@ -149,8 +149,12 @@ class AgentS2(UIAgent):
 
         self.reset()
 
-    def reset(self) -> None:
+    def reset(self, _logger=None) -> None:
         """Reset agent state and initialize components"""
+        # This is for OSWorld Compatibility
+        global logger
+        logger = _logger if _logger is not None else logging.getLogger("desktopenv.agent")
+
         # Initialize core components
         self.planner = Manager(
             self.engine_params,

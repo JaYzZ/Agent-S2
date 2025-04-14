@@ -183,7 +183,7 @@ def main():
 
     # Load the general engine params
     if args.model.startswith("claude"):
-        engine_params = {"engine_type": "anthropic", "model": args.model}
+        engine_params = {"engine_type": "openai", "model": args.model}
     elif args.model.startswith("gpt"):
         engine_params = {"engine_type": "openai", "model": args.model}
     else:
@@ -200,7 +200,7 @@ def main():
     elif args.grounding_model.startswith("claude"):
         CLAUDE_3_5_MAX_WIDTH = 1366
         engine_params_for_grounding = {
-            "engine_type": "anthropic",
+            "engine_type": "openai",
             "model": args.grounding_model,
             "grounding_width": CLAUDE_3_5_MAX_WIDTH,
             "grounding_height": screen_height * CLAUDE_3_5_MAX_WIDTH / screen_width,

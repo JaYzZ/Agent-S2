@@ -75,7 +75,7 @@ class LMMEngineOpenAI(LMMEngine):
         self.api_key = api_key
         self.request_interval = 0 if rate_limit == -1 else 60.0 / rate_limit
 
-        self.llm_client = OpenAI(api_key=self.api_key)
+        self.llm_client = OpenAI(api_key=self.api_key, base_url=os.getenv('OPENAI_BASE_URL'))
 
     @backoff.on_exception(
         backoff.expo, (APIConnectionError, APIError, RateLimitError), max_time=60
@@ -108,7 +108,7 @@ class LMMEngineAnthropic(LMMEngine):
 
         self.api_key = api_key
 
-        self.llm_client = Anthropic(api_key=self.api_key)
+        self.llm_client = Anthropic(api_key=self.api_key, base_url=os.getenv('ANTHROPIC_BASE_URL'))
 
     @backoff.on_exception(
         backoff.expo, (APIConnectionError, APIError, RateLimitError), max_time=60
@@ -164,7 +164,7 @@ class OpenAIEmbeddingEngine(LMMEngine):
         ),
     )
     def get_embeddings(self, text: str) -> np.ndarray:
-        client = OpenAI(api_key=self.api_key)
+        client = OpenAI(api_key=self.api_key, base_url=os.getenv('OPENAI_BASE_URL'))
         response = client.embeddings.create(model=self.model, input=text)
         if self.display_cost:
             total_tokens = response.usage.total_tokens

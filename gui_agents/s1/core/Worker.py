@@ -220,7 +220,7 @@ class Worker(BaseModule):
         # Set Cost based on GPT-4o
         cost = input_tokens * (0.0050 / 1000) + output_tokens * (0.0150 / 1000)
         self.cost_this_turn += cost
-        logger.info("EXECTUOR COST: %s", self.cost_this_turn)
+        logger.info("EXECUTOR COST: %s", self.cost_this_turn)
 
         # Extract code block from the plan
         plan_code = common_utils.parse_single_code_from_string(

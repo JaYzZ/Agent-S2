@@ -216,7 +216,7 @@ class Worker(BaseModule):
         input_tokens, output_tokens = calculate_tokens(self.generator_agent.messages)
         cost = input_tokens * (0.0050 / 1000) + output_tokens * (0.0150 / 1000)
         self.cost_this_turn += cost
-        logger.info("EXECTUOR COST: %s", self.cost_this_turn)
+        logger.info("EXECUTOR COST: %s", self.cost_this_turn)
 
         # Use the DescriptionBasedACI to convert agent_action("desc") into agent_action([x, y])
         try:
